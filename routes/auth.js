@@ -47,7 +47,7 @@ router.post('/signup',
 
             // Signing JWT Token and giving back to User
             const token = jwt.sign({ id: newUser._id }, jwtSecret);
-            res.json(token);
+            res.json({ token, userName: newUser.name });
         } catch (error) {
             res.json("Internal Server Error");
         }
@@ -83,7 +83,7 @@ router.post('/login',
         try {
             // Signing JWT Token and giving back to User
             const token = jwt.sign({ id: user._id }, jwtSecret);
-            res.json(token);
+            res.json({ token, userName: user.name });
         } catch (error) {
             res.json("Internal Server Error");
         }
